@@ -1,10 +1,3 @@
-# Story 2
-# As a user,
-# When I visit an actor's show page,
-# I see their name, their age, and a list of
-# the names of all of the movies they are in.
-
-
 require 'rails_helper'
 
 RSpec.describe "actor show page", type: :feature do
