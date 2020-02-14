@@ -20,19 +20,19 @@ RSpec.describe "studio index page", type: :feature do
   scenario "list of all studios and their movies" do
     visit "/studios"
 
-    expect(page).to have_content("#{@astudios.name}")
-    expect(page).to have_content("#{@bstudios.name}")
-    expect(page).to have_content("#{@cstudios.name}")
-    expect(page).to have_content("#{@dstudios.name}")
+    expect(page).to have_content(@astudios.name)
+    expect(page).to have_content(@bstudios.name)
+    expect(page).to have_content(@cstudios.name)
+    expect(page).to have_content(@dstudios.name)
 
     within("#studios-#{@cstudios.id}") do
-      expect(page).to have_content("#{@actionmovie.name}")
-      expect(page).to have_content("#{@romancemovie.name}")
+      expect(page).to have_content(@actionmovie.name)
+      expect(page).to have_content(@romancemovie.name)
     end
 
     within("#studios-#{@dstudios.id}") do
-      expect(page).to have_content("#{@comedymovie.name}")
-      expect(page).to have_content("#{@adventuremovie.name}")
+      expect(page).to have_content(@comedymovie.name)
+      expect(page).to have_content(@adventuremovie.name)
     end
   end
 end
