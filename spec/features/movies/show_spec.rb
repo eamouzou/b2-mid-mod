@@ -1,9 +1,3 @@
-# Story 3
-# As a user,
-# When I visit a movie's show page.
-# I see the movie's name, creation year, and genre,
-# and a list of all its actors from youngest to oldest.
-# And I see the average age of all of the movie's actors
 require 'rails_helper'
 
 RSpec.describe "movie show page", type: :feature do
@@ -56,7 +50,7 @@ RSpec.describe "movie show page", type: :feature do
 
   scenario "average age of all the movie's actors" do
     visit "/movies/#{@actionmovie.id}"
-    
+
     expect(page).to have_content("Actors' Average Age: 43")
   end
 
