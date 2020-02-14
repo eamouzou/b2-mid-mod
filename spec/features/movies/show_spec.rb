@@ -54,4 +54,27 @@ RSpec.describe "movie show page", type: :feature do
     expect(page).to have_content("Actors' Average Age: 43")
   end
 
+  scenario "add an actor to a movie" do
+    visit "/movies/#{@thrillermovie.id}"
+    expect(page).to have_content("Featured Actors: Thomas Ngijol Aissa Maiga")
+    expect(page).to have_content("Actors' Average Age: 42")
+
+    fill_in "actor_name", with: @actor2.name
+    click_button 'Add an Actor'
+
+    expect(current_path).to eq("/movies/#{@thrillermovie.id}")
+    expect(page).to have_content("Featured Actors: Thomas Ngijol Fabrice Eboue Aissa Maiga")
+    expect(page).to have_content("Actors' Average Age: 42")
+
+    visit "/actors/#{@actor2.id}"
+
+    within("#movies-#{@actor2.id}") do
+      expect(page).to have_content(@romancemovie.name)
+      expect(page).to have_content(@horrormovie.name)
+      expect(page).to have_content(@actionmovie.name)
+      expect(page).to have_content(@dramamovie.name)
+      expect(page).to have_content(@thrillermovie.name)
+    end
+  end
+
 end
